@@ -1,0 +1,34 @@
+{
+    "xsappname": "ui5-managed",
+    "tenant-mode": "dedicated",
+    "description": "Security profile of called application",
+    "scopes": [
+      {
+        "name": "uaa.user",
+        "description": "UAA"
+      },
+      {
+          "name": "$XSAPPNAME.accessDataService",
+          "description": "Allows to access data service within ui5-managed app"
+      },
+      {
+          "name": "$XSAPPNAME.accessApp",
+          "description": "Allows to generally access ui5-managed app"
+      }    
+    ],
+    "role-templates": [
+      {
+        "name": "Token_Exchange",
+        "description": "UAA",
+        "scope-references": [
+          "uaa.user"
+        ]
+      },
+      {
+          "name": "user",
+          "description": "Basic ui5-managed app user",
+          "scope-references": ["$XSAPPNAME.accessApp", "$XSAPPNAME.accessDataService"]
+      }
+    ]
+  }
+  

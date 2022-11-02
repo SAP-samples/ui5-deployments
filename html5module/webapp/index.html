@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta charset="UTF-8">
+
+		<title>UI5App</title>
+
+		<!--on data-sap-ui-libs: https://stackoverflow.com/questions/55952720/standalone-ui5-how-to-treat-bootstraps-data-sap-ui-libs-vs-manifests-dependen-->
+		<script id="sap-ui-bootstrap"
+			src="resources/sap-ui-core.js"
+			data-sap-ui-theme="sap_horizon"
+			data-sap-ui-compatVersion="edge"
+			data-sap-ui-preload="async"
+			data-sap-ui-async="true"
+			data-sap-ui-oninit="module:sap/ui/core/ComponentSupport"
+			data-sap-ui-resourceroots='{"ui5app": "./"}'>
+		</script>
+	</head>
+	
+	<body class="sapUiBody" id="content">
+		<div data-sap-ui-component data-name="ui5app" data-id="container" data-settings='{"id" : "ui5app"}'></div>
+	</body>
+</html>

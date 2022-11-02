@@ -1,0 +1,17 @@
+<mvc:View controllerName="ui5app.controller.Main" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core"
+	xmlns:f="sap.f" >
+	<f:DynamicPage preserveHeaderStateOnScroll="true">
+		<f:header>
+			<f:DynamicPageHeader id="dpHeader">
+				<HBox>
+                    
+				</HBox>
+			</f:DynamicPageHeader>
+		</f:header>
+		<f:content>
+            <HBox>
+            <Button text="get data" press="fetchNorthwindData"/>
+            </HBox>
+		</f:content>
+	</f:DynamicPage>
+</mvc:View>

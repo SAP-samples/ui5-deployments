@@ -1,0 +1,15 @@
+{
+	"name": "ui5deployments",
+	"description": "read the README",
+	"dependencies": {
+        "mbt": "^1.2.18"
+	},
+	"scripts": {
+		"build-standalone": "mbt build -p=cf -s=./_build_standalone -t=../mta_archives",
+        "build-managed": "mbt build -p=cf -s=./_build_managed -t=../mta_archives",
+        "deploy-standalone": "cf deploy ./mta_archives/ui5-standalone_1.0.0.mtar -f",
+        "deploy-managed": "cf deploy ./mta_archives/ui5-managed_1.0.0.mtar -f",
+        "undeploy-standalone": "cf undeploy ui5-standalone --delete-services --delete-service-keys -f",
+        "undeploy-managed": "cf undeploy ui5-managed --delete-services --delete-service-keys -f"
+	}
+}

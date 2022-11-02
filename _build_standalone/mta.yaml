@@ -1,0 +1,90 @@
+ID: ui5-standalone
+description: mta descriptor for ui5 app with standalone approuter setup
+_schema-version: "2.1"
+version: 1.0.0
+
+modules:
+  - name: ui5-standalone-approuter
+    type: approuter.nodejs
+    path: ../approuter
+    parameters:
+      routes:
+        - route: https://${default-host}.${default-domain}
+      disk-quota: 256M
+      memory: 256M
+    requires:
+      - name: ui5-standalone-html5repo-runtime #needed for accessing the html5 app content
+      - name: ui5-standalone-destination #needed to connect to external data services 
+      - name: ui5-standalone-connectivity #needed if you would like to connect on-premise backends
+      - name: ui5-standalone-uaa #needed for authentication & authorization (scope checks)
+  - name: html5-deployer
+    type: com.sap.application.content
+    path: ../.
+    requires:
+      - name: ui5-shared-repo-host
+        parameters:
+          content-target: true
+    build-parameters:
+      build-result: resources
+      requires:
+        - artifacts:
+            - ui5app.zip
+          name: ui5app
+          target-path: resources/      
+  - name: ui5app
+    type: html5
+    path: ../html5module
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+        - npm install
+        - npm run build:cf
+      supported-platforms: []
+
+resources:
+  - name: ui5-shared-repo-host
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-host
+      service-key:
+        name: ui5-shared-repo-host-key
+  - name: ui5-standalone-html5repo-runtime
+    type: org.cloudfoundry.managed-service  
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-runtime
+  - name: ui5-standalone-destination
+    type: org.cloudfoundry.managed-service
+    parameters:
+      config:
+        HTML5Runtime_enabled: true
+        init_data:
+          instance:
+            destinations:
+            - Authentication: NoAuthentication
+              Name: ui5
+              ProxyType: Internet
+              Type: HTTP
+              URL: https://ui5.sap.com
+            - Authentication: PrincipalPropagation
+              Name: northwind
+              ProxyType: Internet
+              Type: HTTP
+              URL: https://services.odata.org/v2/northwind/northwind.svc
+            existing_destinations_policy: ignore
+        version: 1.0.0    
+      service-plan: lite
+      service: destination
+  - name: ui5-standalone-connectivity
+    type: org.cloudfoundry.managed-service  
+    parameters:
+      service-plan: lite
+      service: connectivity
+  - name: ui5-standalone-uaa
+    type: org.cloudfoundry.managed-service  
+    parameters:
+      path: ./xs-security-standalone.json
+      service-plan: application
+      service: xsuaa

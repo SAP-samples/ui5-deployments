@@ -1,0 +1,112 @@
+{
+    "_version": "1.32.0",
+    "sap.app": {
+        "id": "ui5app",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+		"dataSources": {
+			"ServiceBackend": {
+				"uri": "northwind/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			}
+        },        
+        "resources": "resources.json",
+        "ach": "not-app-lic-cable"
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+		"supportedThemes": ["sap_fiori_3", "sap_horizon"],
+		"fullWidth": true        
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "dependencies": {
+            "minUI5Version": "1.76.1",
+            "libs": {
+				"sap.m": {},
+				"sap.f": {},
+				"sap.ui.comp": {},
+				"sap.ui.unified": {}
+            }
+        },    
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "ui5app.i18n.i18n"
+                }
+            },
+			"OData": {
+				"dataSource": "ServiceBackend",
+				"preload": true,
+                "settings": {
+                    "useBatch": false
+                }
+			}
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "rootView": {
+			"viewName": "ui5app.view.App",
+			"id": "app",
+			"type": "XML",
+			"async": true
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "ui5app.view",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"async": true
+			},
+			"routes": [{
+				"pattern": "",
+				"name": "mainview",
+				"target": "mainView"
+			}],
+			"targets": {
+				"mainView": {
+					"viewId": "Main",
+					"viewName": "Main"
+				}
+			}
+		}
+	},
+    "sap.cloud": {
+        "public": true,
+        "service": "ui5app"
+    }
+}
