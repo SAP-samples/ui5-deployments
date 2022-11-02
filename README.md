@@ -8,6 +8,15 @@ This Repo aims to showcase a simple UI5 freestyle application that can be deploy
 
 Full explanation can be found in this [SAP Community Blogpost](https://blogs.sap.com/2022/11/01/build-and-deploy-ui5-freestyle-applications-to-sap-btp-cloud-foundry-environment/)
 
+## Requirements
+- Access to a SAP BTP subaccount (Trial is sufficient)
+- Cloud foundry environment provisioned
+- Launchpad, Workzone or comparable subscription with managed approuter functionality
+- Quota for the HTML5 Application Repository Service
+- Developer-Access to a CF Space
+- SAP Business Application Studio Subscription or comparable local IDE like VSCode
+- CF CLI & Node available locally on your machine or in BAS dev space
+
 ## Build steps
 Run the mbt build command with either of the mta.yaml files either directly or via the npm scripts in the root package.json
 - mbt build -p=cf -s=./_build_standalone -t=../mta_archives
@@ -66,6 +75,9 @@ For additional support, [ask a question in SAP Community](https://answers.sap.co
 
 ## Contributing
 If you wish to contribute code, offer fixes or improvements, please send a pull request. Due to legal reasons, contributors will be asked to accept a DCO when they create the first pull request to this project. This happens in an automated fashion during the submission process. SAP uses [the standard DCO text of the Linux Foundation](https://developercertificate.org/).
+
+## Code of Conduct
+The [SAP-samples CoC](https://github.com/SAP-samples/.github/blob/main/CODE_OF_CONDUCT.md) applies
 
 ## License
 Copyright (c) 2022 SAP SE or an SAP affiliate company. All rights reserved. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSE) file.
