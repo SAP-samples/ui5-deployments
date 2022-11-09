@@ -1,3 +1,4 @@
+# Build & Deploy SAPUI5 Freestyle Applications to SAP BTP, Cloud Foundry Environment
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/ui5-deployments)](https://api.reuse.software/info/github.com/SAP-samples/ui5-deployments)
 ## Intro
 This repo aims to showcase a simple UI5 freestyle application that can be deployed to SAP BTP, Cloud Foundry Environment with:
