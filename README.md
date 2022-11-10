@@ -35,7 +35,11 @@ More info: https://sap.github.io/cloud-mta-build-tool/usage/
 - This will only work if you have subscribed to a service that includes the managed approuter functionality (launchpad/portal/workzone)
 
 ## Deploy Steps
-- cf login (in your preferred btp cf space)
+Enable cf deploy and cf undeploy commands (see also [multiapps-cli-plugin](https://github.com/cloudfoundry/multiapps-cli-plugin))
+- cf install-plugin multiapps
+
+Login to your preferred BTP Cloud Foundry Space & deploy the MTAR archives
+- cf login
 - cf deploy ./mta_archives/ui5-standalone_1.0.0.mtar -f
 - cf deploy ./mta_archives/ui5-managed_1.0.0.mtar -f
 
