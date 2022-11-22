@@ -9,16 +9,31 @@
         },
         "title": "{{appTitle}}",
         "description": "{{appDescription}}",
-		"dataSources": {
-			"ServiceBackend": {
-				"uri": "northwind/",
-				"type": "OData",
-				"settings": {
-					"odataVersion": "2.0",
-					"localUri": "localService/metadata.xml"
-				}
-			}
-        },        
+        "dataSources": {
+            "ServiceBackend": {
+                "uri": "northwind/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "ui5app-inbound": {
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    },
+                    "semanticObject": "ui5demo",
+                    "action": "managed",
+                    "title": "{{flpTitle}}",
+                    "subTitle": "{{flpSubtitle}}",
+                    "icon": ""
+                }
+            }
+        },
         "resources": "resources.json",
         "ach": "not-app-lic-cable"
     },
@@ -37,20 +52,23 @@
             "tablet": true,
             "phone": true
         },
-		"supportedThemes": ["sap_fiori_3", "sap_horizon"],
-		"fullWidth": true        
+        "supportedThemes": [
+            "sap_fiori_3",
+            "sap_horizon"
+        ],
+        "fullWidth": true
     },
     "sap.ui5": {
         "flexEnabled": false,
         "dependencies": {
             "minUI5Version": "1.76.1",
             "libs": {
-				"sap.m": {},
-				"sap.f": {},
-				"sap.ui.comp": {},
-				"sap.ui.unified": {}
+                "sap.m": {},
+                "sap.f": {},
+                "sap.ui.comp": {},
+                "sap.ui.unified": {}
             }
-        },    
+        },
         "contentDensities": {
             "compact": true,
             "cozy": true
@@ -62,13 +80,13 @@
                     "bundleName": "ui5app.i18n.i18n"
                 }
             },
-			"OData": {
-				"dataSource": "ServiceBackend",
-				"preload": true,
+            "OData": {
+                "dataSource": "ServiceBackend",
+                "preload": true,
                 "settings": {
                     "useBatch": false
                 }
-			}
+            }
         },
         "resources": {
             "css": [
@@ -78,33 +96,35 @@
             ]
         },
         "rootView": {
-			"viewName": "ui5app.view.App",
-			"id": "app",
-			"type": "XML",
-			"async": true
-		},
-		"routing": {
-			"config": {
-				"routerClass": "sap.m.routing.Router",
-				"viewType": "XML",
-				"viewPath": "ui5app.view",
-				"controlId": "app",
-				"controlAggregation": "pages",
-				"async": true
-			},
-			"routes": [{
-				"pattern": "",
-				"name": "mainview",
-				"target": "mainView"
-			}],
-			"targets": {
-				"mainView": {
-					"viewId": "Main",
-					"viewName": "Main"
-				}
-			}
-		}
-	},
+            "viewName": "ui5app.view.App",
+            "id": "app",
+            "type": "XML",
+            "async": true
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "ui5app.view",
+                "controlId": "app",
+                "controlAggregation": "pages",
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "mainview",
+                    "target": "mainView"
+                }
+            ],
+            "targets": {
+                "mainView": {
+                    "viewId": "Main",
+                    "viewName": "Main"
+                }
+            }
+        }
+    },
     "sap.cloud": {
         "public": true,
         "service": "ui5app"
