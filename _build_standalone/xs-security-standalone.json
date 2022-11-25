@@ -2,19 +2,24 @@
   "xsappname": "ui5-standalone",
   "tenant-mode": "dedicated",
   "description": "Security profile of called application",
+  "oauth2-configuration": {
+    "redirect-uris": [
+      "https://*.hana.ondemand.com/**"
+    ]
+  },
   "scopes": [
     {
       "name": "uaa.user",
       "description": "UAA"
     },
     {
-        "name": "$XSAPPNAME.accessDataService",
-        "description": "Allows to access data service within ui5-standalone app"
+      "name": "$XSAPPNAME.accessDataService",
+      "description": "Allows to access data service within ui5-standalone app"
     },
     {
-        "name": "$XSAPPNAME.accessApp",
-        "description": "Allows to generally access ui5-standalone app"
-    }      
+      "name": "$XSAPPNAME.accessApp",
+      "description": "Allows to generally access ui5-standalone app"
+    }
   ],
   "role-templates": [
     {
@@ -25,9 +30,12 @@
       ]
     },
     {
-        "name": "user",
-        "description": "Basic ui5-standalone app user",
-        "scope-references": ["$XSAPPNAME.accessApp", "$XSAPPNAME.accessDataService"]
+      "name": "user",
+      "description": "Basic ui5-standalone app user",
+      "scope-references": [
+        "$XSAPPNAME.accessApp",
+        "$XSAPPNAME.accessDataService"
+      ]
     }
   ]
 }
