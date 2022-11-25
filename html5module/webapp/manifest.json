@@ -7,8 +7,8 @@
         "applicationVersion": {
             "version": "1.0.0"
         },
-        "title": "{{appTitle}}",
-        "description": "{{appDescription}}",
+        "title": "UI5App",
+        "description": "Just an UI5 App",
         "dataSources": {
             "ServiceBackend": {
                 "uri": "northwind/",
