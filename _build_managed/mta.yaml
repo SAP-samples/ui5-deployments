@@ -25,12 +25,12 @@ modules:
         - Name: ui5-shared_repo_host
           ServiceInstanceName: ui5-shared-repo-host
           ServiceKeyName: ui5-shared-repo-host-key
-          sap.cloud.service: ui5-managed
+          sap.cloud.service: ui5app
         - Authentication: OAuth2UserTokenExchange
           Name: ui5-managed_uaa
           ServiceInstanceName: ui5-managed-xsuaa-srv
           ServiceKeyName: ui5-managed-uaa-key
-          sap.cloud.service: ui5-managed
+          sap.cloud.service: ui5app
         existing_destinations_policy: ignore
   build-parameters:
     no-source: true

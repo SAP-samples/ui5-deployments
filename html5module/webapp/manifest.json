@@ -21,7 +21,7 @@
         },
         "crossNavigation": {
             "inbounds": {
-                "project1-inbound": {
+                "ui5app-inbound": {
                     "signature": {
                         "parameters": {},
                         "additionalParameters": "allowed"
